@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kafka-demo-app
+  labels:
+    app: kafka-demo-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kafka-demo-app
+  template:
+    metadata:
+      labels:
+        app: kafka-demo-app
+    spec:
+      containers:
+      - name: app
+        image: image-registry.openshift-image-registry.svc:5000/kafka-testing/kafka-demo-app:latest
+        ports:
+        - containerPort: 8080
+        resources:
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
