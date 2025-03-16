@@ -1,0 +1,10 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: kafka-demo-app
+spec:
+  to:
+    kind: Service
+    name: kafka-demo-app
+  port:
+    targetPort: 8080
